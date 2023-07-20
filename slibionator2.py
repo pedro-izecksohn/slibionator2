@@ -3,7 +3,7 @@
 about = '''slibionator2 - A cryptography application.
 slibionator means 'sliding bits on a torus'.
 By: Pedro Izecksohn
-Version: 2023-Jul-20 02:04
+Version: 2023-Jul-20 10:41
 License: This is free software.'''
 
 import random
@@ -139,9 +139,9 @@ def encrypt (pw, ba):
   cursor = XY.from_ifc (random.randint(0,63))
   nblocks=len(ba)//8
   if len(ba)%8:
-      zeros = bytearray("\0"*(8-(len(ba)%8)))
-      print(zeros)
-      ba.append(zeros)
+      zeros = bytearray(8-(len(ba)%8))
+      #print(zeros)
+      ba.extend(zeros)
       nblocks+=1
   print(f"nblocks={nblocks}")
   index=0
